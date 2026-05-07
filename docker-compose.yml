@@ -1,0 +1,41 @@
+services:
+  db:
+    image: postgres:15-alpine
+    ports: # Maps host port 4001 to container port 5432 for the database
+      - "4001:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: local_dev_password
+      POSTGRES_DB: local_supabase
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d local_supabase"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    ports: # Maps host port 3001 to container port 3000 for the Next.js app
+      - "3001:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules # Prevents your local machine's node_modules from conflicting with the container's
+      - /app/.next       # Keeps Next.js build cache inside the container
+    environment:
+      - DATABASE_URL=postgresql://postgres:local_dev_password@db:5432/local_supabase
+      
+      - DIRECT_URL=postgresql://postgres:local_dev_password@db:5432/local_supabase
+      - TRACKER_ADMIN_PASSWORD=Quill
+      
+    depends_on:
+      db:
+        condition: service_healthy
+        
+volumes:
+  postgres_data:
+  planka_db_data:
+  planka_user_data:

@@ -1,0 +1,22 @@
+Database & Query Optimization Strategies
+========================================
+
+1. Replace Polling with Real-Time Events
+- Current: `setInterval` with `router.refresh()` every 2s (high continuous DB load).
+- Solution: Implement Server-Sent Events (SSE), WebSockets, or a real-time service (like Supabase Realtime or Pusher) to push updates to clients ONLY when the game state actually changes.
+
+2. Cache the Static "Card Library"
+- Current: `prisma.card.findMany()` runs to get all cards for shuffling.
+- Solution: Use Next.js `unstable_cache` or move the static card IDs to a hardcoded JSON file. Since a Tarot deck doesn't change, there's no need to query the DB for its contents repeatedly.
+
+3. Optimize Random Row Selection
+- Current: Pulls all card rows into Node.js memory, shuffles them via JS `Math.random()`, and slices 5.
+- Solution: Offload randomization to the database engine using raw SQL. Example: `prisma.$queryRaw('SELECT id FROM "Card" ORDER BY RANDOM() LIMIT 5')`. This only returns 5 IDs over the network.
+
+4. Limit Payload Size with Strict `select` Statements
+- Current: `include: { players: true, draws: true }` fetches every single column for those tables.
+- Solution: Change `include` to `select` and specifically list only the fields the UI actually renders (e.g., `select: { id: true, pseudo: true }`). This shrinks the JSON payload traveling from DB -> Server -> Client.
+
+5. Rethink JSON Snapshot Updates
+- Current: `drawCardFromDeck` and `revealCard` fetch the full `cardsSnapshot` JSON blob, mutate one boolean, and re-save the entire blob.
+- Solution: If using PostgreSQL, utilize raw SQL for a `JSONB` partial update to change just the single boolean key. Alternatively, normalize the database schema by turning `cardsSnapshot` into a separate `DrawnCard` relational table, allowing you to update a single row easily.

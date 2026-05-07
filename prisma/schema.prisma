@@ -1,0 +1,63 @@
+// This is your new Prisma schema for the JDR application.
+// It contains the models extracted from your main project.
+
+generator client {
+  provider = "prisma-client-js"
+  // output   = "./node_modules/@prisma/client" // Default location, can be customized if needed
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// File: prisma/jdr.prisma
+
+model Card {
+  id          String  @id @default(cuid())
+  name        String
+  imagePath   String
+  shortDesc   String?
+  shortDescFr String?
+  fullDesc    String?
+  fullDescFr  String?
+}
+
+model Room {
+  id          String @id @default(cuid())
+  code        String @unique
+  gmSessionId String
+
+  isLocked    Boolean @default(false)
+  visibility  String  @default("ALL")
+  allowRevoke Boolean @default(true)
+
+  activePlayerId String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  players Player[]
+  draws   Draw[]
+}
+
+model Player {
+  id     String @id @default(cuid())
+  pseudo String
+  roomId String
+  room   Room   @relation(fields: [roomId], references: [id], onDelete: Cascade)
+
+  draws Draw[]
+}
+
+model Draw {
+  id       String @id @default(cuid())
+  roomId   String
+  room     Room   @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  playerId String
+  player   Player @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  // Stores snapshot of cards: [{ cardId, position, isReversed, isRevealed }]
+  cardsSnapshot Json
+
+  timestamp DateTime @default(now())
+}
