@@ -1,66 +1,72 @@
-import { prisma } from '@/lib/db'
-import GameRoom from '@/components/GameRoom'
-import { redirect } from 'next/navigation'
+"use client";
 
-export default async function Page({ 
-  params, 
-  searchParams 
-}: { 
-  params: Promise<{ code: string }>, 
-  searchParams: Promise<{ pseudo?: string, key?: string }> 
-}) {
-  // Await params in Next.js 15+
-  const { code } = await params
-  const { pseudo, key } = await searchParams
+import { useEffect, useState } from 'react';
+import { SubmitButton } from '@/components/submitButton'
+import { createRoom, joinRoom } from '@/lib/jdr-actions'
+import { Moon, Sun } from "lucide-react";
 
-  if (!pseudo) {
-    // Redirect back to login if no pseudo provided
-    redirect('/')
-  }
 
-  // 1. Fetch Room + Related Data
-  const room = await prisma.room.findUnique({
-    where: { code: code.toUpperCase() },
-    include: {
-      players: true,
-      draws: {
-        orderBy: { timestamp: 'desc' },
-        include: {
-          player: {
-            select: { pseudo: true }
-          }
-        }
-      }
+export default function JdrLandingPage() {
+  const [darkMode, setDarkMode] = useState(false);
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
     }
-  })
-
-  if (!room) return <div className="text-white p-10">Room not found.</div>
-
-  // 2. Fetch Card Library (to map IDs to Images)
-  const cardLibrary = await prisma.card.findMany()
-
-  // 3. Identify User Role
-  const isGM = room.gmSessionId === key
-  
-  // Find current player ID based on pseudo
-  // (In a real app, use auth/cookies. Here we match pseudo string)
-  const currentPlayer = room.players.find(p => p.pseudo === pseudo)
-  
-  // If player isn't in DB and not GM, they shouldn't be here (or we auto-create them)
-  if (!isGM && !currentPlayer) {
-     redirect('/jdr') 
-  }
+  }, [darkMode]);
 
   return (
-    <GameRoom 
-      room={room}
-      initialDraws={room.draws}
-      cardLibrary={cardLibrary}
-      currentUser={{
-        pseudo: pseudo,
-        isGM: isGM,
-        id: isGM ? 'GM' : currentPlayer?.id || 'unknown'
-      }}
-    />
+    <div>
+      {/* Dark Mode Toggle */}
+      <button 
+        onClick={() => setDarkMode(!darkMode)}
+        className="p-2 rounded-full hover:bg-muted text-foreground transition-colors absolute top-5 right-5"
+        aria-label="Toggle Theme"
+      >
+        {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+      </button>
+      
+      <div className="min-h-screen flex items-center justify-center bg-background text-foreground font-sans">
+        <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
+          {/* GM SECTION */}
+          <div className="bg-card p-8 rounded-2xl border border-border shadow-xl">
+            <h2 className="text-2xl font-bold mb-4 text-secondary">Game Master</h2>
+            <form action={createRoom} className="flex flex-col gap-4">
+              <input 
+                name="code" type="text" placeholder="Room Code (e.g. CAMELOT)" required 
+                className="bg-background border border-border rounded p-3 text-card-foreground"
+              />
+              <input 
+                name="pseudo" type="text" placeholder="Your Name" required 
+                className="bg-background border border-border rounded p-3 text-card-foreground"
+              />
+              <SubmitButton color='secondary'>
+                Create Room
+              </SubmitButton>
+            </form>
+          </div>
+
+          {/* PLAYER SECTION */}
+          <div className="bg-card p-8 rounded-2xl border border-border shadow-xl">
+            <h2 className="text-2xl font-bold mb-4 text-primary">Player</h2>
+            <form action={joinRoom} className="flex flex-col gap-4">
+              <input 
+                name="code" type="text" placeholder="Room Code" required 
+                className="bg-background border border-border rounded p-3 text-card-foreground"
+              />
+              <input 
+                name="pseudo" type="text" placeholder="Your Name" required 
+                className="bg-background border border-border rounded p-3 text-card-foreground"
+              />
+              <SubmitButton color='primary'>
+                Join Room
+              </SubmitButton>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
   )
 }

@@ -17,7 +17,7 @@ sleep 2
 
 # 4. Verify table existence
 echo "--- Verifying Table: jdr.Card ---"
-psql "$DATABASE_URL" -c "\dt jdr.*"
+psql "$DATABASE_URL" -c "\dt public.*"
 
 # 5. Run the SQL seed
 echo "--- Seeding Database ---"

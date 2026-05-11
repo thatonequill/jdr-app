@@ -20,7 +20,7 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     ports: # Maps host port 3001 to container port 3000 for the Next.js app
-      - "3001:3000"
+      - "3001:3001"
     volumes:
       - .:/app
       - /app/node_modules # Prevents your local machine's node_modules from conflicting with the container's

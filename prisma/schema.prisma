@@ -1,16 +1,10 @@
-// This is your new Prisma schema for the JDR application.
-// It contains the models extracted from your main project.
-
 generator client {
   provider = "prisma-client-js"
-  // output   = "./node_modules/@prisma/client" // Default location, can be customized if needed
 }
 
 datasource db {
   provider = "postgresql"
 }
-
-// File: prisma/jdr.prisma
 
 model Card {
   id          String  @id @default(cuid())

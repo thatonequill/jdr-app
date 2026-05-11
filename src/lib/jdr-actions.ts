@@ -60,7 +60,7 @@ export async function createRoom(formData: FormData) {
     })
   }
 
-  redirect(`/jdr/${code}?pseudo=${pseudo}&key=${gmSessionId}`)
+  redirect(`/${code}?pseudo=${pseudo}&key=${gmSessionId}`)
 }
 
 export async function joinRoom(formData: FormData) {
@@ -77,7 +77,7 @@ export async function joinRoom(formData: FormData) {
     data: { pseudo, roomId: room.id }
   })
 
-  redirect(`/jdr/${code}?pseudo=${pseudo}`)
+  redirect(`/${code}?pseudo=${pseudo}`)
 }
 
 // --- 2. GAMEPLAY ---
@@ -109,7 +109,7 @@ export async function performDraw(roomId: string, playerId: string, cardCount: n
     }
   })
 
-  revalidatePath(`/jdr/[code]`)
+  revalidatePath(`/[code]`)
 }
 
 export async function drawCardFromDeck(drawId: string, cardIndex: number) {
@@ -128,7 +128,7 @@ export async function drawCardFromDeck(drawId: string, cardIndex: number) {
     data: { cardsSnapshot: currentSnapshot as any }
   })
 
-  revalidatePath(`/jdr/[code]`)
+  revalidatePath(`/[code]`)
 }
 
 export async function revealCard(drawId: string, cardIndex: number) {
@@ -146,7 +146,7 @@ export async function revealCard(drawId: string, cardIndex: number) {
     data: { cardsSnapshot: currentSnapshot as any }
   })
 
-  revalidatePath(`/jdr/[code]`)
+  revalidatePath(`/[code]`)
 }
 
 // --- 3. GM CONTROLS ---
@@ -157,7 +157,7 @@ export async function setActivePlayer(roomId: string, playerId: string) {
     data: { activePlayerId: playerId }
   })
   // Revalidates any dynamic route matching this structure
-  revalidatePath('/jdr/[code]', 'page') 
+  revalidatePath('/[code]', 'page') 
 }
 
 export async function toggleLock(roomId: string, isLocked: boolean) {
@@ -165,7 +165,7 @@ export async function toggleLock(roomId: string, isLocked: boolean) {
     where: { id: roomId },
     data: { isLocked }
   })
-  revalidatePath('/jdr/[code]', 'page')
+  revalidatePath('/[code]', 'page')
 }
 
 export async function emptyRoom(roomId: string) {
