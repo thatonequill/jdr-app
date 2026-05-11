@@ -7,8 +7,26 @@ import Controls from './ControlPanel'
 import { Moon, Sun } from 'lucide-react'
 import Card from './Card'
 import { drawCardFromDeck } from '@/lib/jdr-actions'
+import { createClient } from '@supabase/supabase-js' // Import Supabase client
+import cardLibraryData from '@/lib/card-library.json'; // Import the static card library
 
-export default function GameRoom({ room, initialDraws, cardLibrary, currentUser }: any) {
+// Initialize Supabase client outside the component to avoid re-initialization
+// Ensure these environment variables are correctly set in your .env.local or deployment environment
+let supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+// FIX: The browser on the host machine cannot resolve 'host.docker.internal'.
+// We rewrite it to 'localhost' if we are running in the client browser.
+if (typeof window !== 'undefined' && supabaseUrl?.includes('host.docker.internal')) {
+  supabaseUrl = supabaseUrl.replace('host.docker.internal', 'localhost');
+}
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.error('Supabase environment variables (NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY) are not set. Realtime functionality may not work.');
+}
+const supabase = createClient(supabaseUrl!, supabaseAnonKey!); // Using non-null assertion, assuming check above or external configuration
+
+export default function GameRoom({ room, initialDraws, currentUser }: any) {
   const [darkMode, setDarkMode] = useState(false);
   useEffect(() => {
     if (darkMode) {
@@ -19,20 +37,74 @@ export default function GameRoom({ room, initialDraws, cardLibrary, currentUser 
   }, [darkMode]);
 
   const router = useRouter()
-  const [draws, setDraws] = useState(initialDraws)
-  const [activePlayerId, setActivePlayerId] = useState(room.activePlayerId)
-  const [isLocked, setIsLocked] = useState(room.isLocked)
+  const [draws, setDraws] = useState(initialDraws);
+  const [activePlayerId, setActivePlayerId] = useState(room.activePlayerId);
+  const [isLocked, setIsLocked] = useState(room.isLocked);
 
-  // POLLING: Refresh data every 2 seconds
+  // REMOVED POLLING: Refresh data every 2 seconds
+  // The polling mechanism is replaced by Supabase Realtime subscriptions below.
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     // Next.js "router.refresh()" re-runs the Server Component
+  //     // and updates the props of this component securely.
+  //     router.refresh()
+  //   }, 2000)
+  //   return () => clearInterval(interval)
+  // }, [router])
+
+  // NEW: Supabase Realtime subscriptions for game updates
   useEffect(() => {
-    const interval = setInterval(() => {
-      // Next.js "router.refresh()" re-runs the Server Component
-      // and updates the props of this component securely.
-      router.refresh()
-    }, 2000)
-    return () => clearInterval(interval)
-  }, [router])
+    if (!room?.id) return;
 
+    console.log(`Subscribing to game updates for room: ${room.id}`);
+
+    // Subscribe to changes in the 'Room' table for this specific room
+    const roomChannel = supabase
+      .channel(`game_room:${room.id}`) // Unique channel name for room updates
+      .on(
+        'postgres_changes',
+        { event: 'UPDATE', schema: 'public', table: 'Room', filter: `id=eq.${room.id}` },
+        (payload) => {
+          console.log('Supabase Realtime Room UPDATE received:', payload);
+          router.refresh(); // Trigger a refresh to re-fetch updated room data
+        }
+      )
+      .subscribe();
+
+    // Subscribe to changes in the 'Draw' table for draws belonging to this room
+    const drawChannel = supabase
+      .channel(`game_draws:${room.id}`) // Unique channel name for draw updates
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'Draw', filter: `roomId=eq.${room.id}` },
+        (payload) => {
+          console.log('Supabase Realtime Draw change received:', payload);
+          router.refresh(); // Trigger a refresh to re-fetch updated draws
+        }
+      )
+      .subscribe();
+
+    // Subscribe to changes in the 'Player' table for players belonging to this room
+    const playerChannel = supabase
+      .channel(`game_players:${room.id}`) // Unique channel name for player updates
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'Player', filter: `roomId=eq.${room.id}` },
+        (payload) => {
+          console.log('Supabase Realtime Player change received:', payload);
+          router.refresh(); // Trigger a refresh to re-fetch updated players
+        }
+      )
+      .subscribe();
+
+    return () => {
+      console.log(`Unsubscribing from Supabase channels for game:${room.id}`);
+      supabase.removeChannel(roomChannel);
+      supabase.removeChannel(drawChannel);
+      supabase.removeChannel(playerChannel);
+    };
+  }, [room?.id, router]); // Re-subscribe if room.id or router changes
+  
   // Sync state with incoming props (from polling)
   useEffect(() => {
     setDraws(room.draws)
@@ -117,7 +189,7 @@ export default function GameRoom({ room, initialDraws, cardLibrary, currentUser 
            <div className="w-full flex-1">
              <Table 
                draws={draws} 
-               cardLibrary={cardLibrary} 
+               cardLibrary={cardLibraryData} 
                currentUser={currentUser}
                activePlayerId={activePlayerId}
              />

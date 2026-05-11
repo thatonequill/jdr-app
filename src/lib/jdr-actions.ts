@@ -3,6 +3,7 @@
 import { prisma } from '@/lib/db' // Points to your new working singleton
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
+import { Prisma } from '@prisma/client'; // Import Prisma for raw SQL types
 
 // Type definition for the Card Snapshot stored in JSON
 interface CardSnapshot {
@@ -84,15 +85,13 @@ export async function joinRoom(formData: FormData) {
 
 export async function performDraw(roomId: string, playerId: string, cardCount: number) {
   // 1. Get all card IDs
-  const allCards = await prisma.card.findMany({ select: { id: true } })
-  if (allCards.length === 0) return 
+  // Optimize: Select random card IDs directly from the database
+  const randomCardIds: { id: string }[] = await prisma.$queryRaw(
+    Prisma.sql`SELECT id FROM "Card" ORDER BY RANDOM() LIMIT ${cardCount}`
+  );
+  if (randomCardIds.length === 0) return;
 
-  // 2. Shuffle
-  const shuffled = allCards.sort(() => 0.5 - Math.random())
-  const selected = shuffled.slice(0, cardCount)
-
-  // 3. Create JSON Snapshot
-  const snapshot: CardSnapshot[] = selected.map((card: { id: any }, index: any) => ({
+  const snapshot: CardSnapshot[] = randomCardIds.map((card, index) => ({
     cardId: card.id,
     position: index,
     isReversed: Math.random() < 0.38, 
@@ -100,7 +99,7 @@ export async function performDraw(roomId: string, playerId: string, cardCount: n
     isDrawn: false
   }))
 
-  // 4. Save
+  // Save the new draw
   await prisma.draw.create({
     data: {
       roomId,
@@ -109,44 +108,37 @@ export async function performDraw(roomId: string, playerId: string, cardCount: n
     }
   })
 
-  revalidatePath(`/[code]`)
+  revalidatePath(`/[code]`, 'page')
 }
 
 export async function drawCardFromDeck(drawId: string, cardIndex: number) {
-  const draw = await prisma.draw.findUnique({ where: { id: drawId } })
-  if (!draw) return
+  await prisma.$executeRaw(
+    Prisma.sql`
+      UPDATE "Draw"
+      SET "cardsSnapshot" = jsonb_set(
+          jsonb_set("cardsSnapshot", ARRAY[${cardIndex}::text, 'isDrawn'], 'true'::jsonb),
+          ARRAY[${cardIndex}::text, 'isRevealed'], 'true'::jsonb
+      )
+      WHERE id = ${drawId};
+    `
+  );
 
-  const currentSnapshot = draw.cardsSnapshot as unknown as CardSnapshot[]
-  
-  if (currentSnapshot[cardIndex]) {
-    currentSnapshot[cardIndex].isDrawn = true
-    currentSnapshot[cardIndex].isRevealed = true
-  }
-
-  await prisma.draw.update({
-    where: { id: drawId },
-    data: { cardsSnapshot: currentSnapshot as any }
-  })
-
-  revalidatePath(`/[code]`)
+  revalidatePath(`/[code]`, 'page')
 }
 
 export async function revealCard(drawId: string, cardIndex: number) {
-  const draw = await prisma.draw.findUnique({ where: { id: drawId } })
-  if (!draw) return
+  await prisma.$executeRaw(
+    Prisma.sql`
+      UPDATE "Draw"
+      SET "cardsSnapshot" = jsonb_set(
+          "cardsSnapshot",
+          ARRAY[${cardIndex}::text, 'isRevealed'], 'true'::jsonb
+      )
+      WHERE id = ${drawId};
+    `
+  );
 
-  const currentSnapshot = draw.cardsSnapshot as unknown as CardSnapshot[]
-  
-  if (currentSnapshot[cardIndex]) {
-    currentSnapshot[cardIndex].isRevealed = true
-  }
-
-  await prisma.draw.update({
-    where: { id: drawId },
-    data: { cardsSnapshot: currentSnapshot as any }
-  })
-
-  revalidatePath(`/[code]`)
+  revalidatePath(`/[code]`, 'page')
 }
 
 // --- 3. GM CONTROLS ---

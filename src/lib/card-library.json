@@ -1,0 +1,704 @@
+[
+  {
+    "id": "cmko63zea0000cwvl9fem1qgy",
+    "name": "Fool",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Arcana_0_Fool.avif",
+    "shortDesc": "Beginnings, innocence",
+    "fullDesc": "The start of a new journey, stepping into the unknown with optimism.",
+    "fullDescFr": "Le début d'un nouveau voyage, s'avançant vers l'inconnu avec optimisme.",
+    "shortDescFr": "Nouveaux départs, innocence"
+  },
+  {
+    "id": "cmko63zfj0001cwvlwdr8lb7o",
+    "name": "Magician",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Arcana_1_Magician.avif",
+    "shortDesc": "Manifestation, power",
+    "fullDesc": "Utilization of skills and tools to achieve goals.",
+    "fullDescFr": "Utilisation des compétences et des outils pour atteindre ses objectifs.",
+    "shortDescFr": "Manifestation, pouvoir"
+  },
+  {
+    "id": "cmko63zgs0002cwvl4cnwbrb3",
+    "name": "HighPriestess",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Arcana_2_HighPriestess.avif",
+    "shortDesc": "Intuition, mystery",
+    "fullDesc": "Trusting your inner voice and the subconscious mind.",
+    "fullDescFr": "Faire confiance à sa voix intérieure et à son subconscient.",
+    "shortDescFr": "Intuition, mystère"
+  },
+  {
+    "id": "cmko63zi10003cwvl65xq6u2o",
+    "name": "Empress",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Arcana_3_Empress.avif",
+    "shortDesc": "Fertility, nature",
+    "fullDesc": "Abundance, nurturing, and the creation of life or art.",
+    "fullDescFr": "Abondance, bienveillance et création de la vie ou de l'art.",
+    "shortDescFr": "Fertilité, nature"
+  },
+  {
+    "id": "cmko63zja0004cwvlt5dko3fa",
+    "name": "Emperor",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Arcana_4_Emperor.avif",
+    "shortDesc": "Authority, structure",
+    "fullDesc": "Control, stability, and establishing order.",
+    "fullDescFr": "Contrôle, stabilité et établissement de l'ordre.",
+    "shortDescFr": "Autorité, structure"
+  },
+  {
+    "id": "cmko63zkk0005cwvlv7xwg4aw",
+    "name": "Hierophant",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Arcana_5_Hierophant.avif",
+    "shortDesc": "Tradition, beliefs",
+    "fullDesc": "Spiritual wisdom, religious beliefs, and conformity.",
+    "fullDescFr": "Sagesse spirituelle, croyances religieuses et conformité.",
+    "shortDescFr": "Tradition, croyances"
+  },
+  {
+    "id": "cmko63zlt0006cwvljwu841kw",
+    "name": "Lovers",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Arcana_6_Lovers.avif",
+    "shortDesc": "Love, choices",
+    "fullDesc": "Deep connections, harmony, and difficult decisions.",
+    "fullDescFr": "Connexions profondes, harmonie et décisions difficiles.",
+    "shortDescFr": "Amour, choix"
+  },
+  {
+    "id": "cmko63zn20007cwvlvt4u0vmz",
+    "name": "Chariot",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Arcana_7_Chariot.avif",
+    "shortDesc": "Willpower, victory",
+    "fullDesc": "Overcoming obstacles through determination and focus.",
+    "fullDescFr": "Surmonter les obstacles grâce à la détermination et la concentration.",
+    "shortDescFr": "Volonté, victoire"
+  },
+  {
+    "id": "cmko63zob0008cwvl28o8rl9v",
+    "name": "Strength",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Arcana_8_Strength.avif",
+    "shortDesc": "Courage, compassion",
+    "fullDesc": "Inner strength and influence through patience.",
+    "fullDescFr": "Force intérieure et influence par la patience.",
+    "shortDescFr": "Courage, compassion"
+  },
+  {
+    "id": "cmko63zpk0009cwvl8ybfry97",
+    "name": "Hermit",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Arcana_9_Hermit.avif",
+    "shortDesc": "Introspection, solitude",
+    "fullDesc": "Soul-searching and seeking inner guidance.",
+    "fullDescFr": "Recherche intérieure et quête de guidance personnelle.",
+    "shortDescFr": "Introspection, solitude"
+  },
+  {
+    "id": "cmko63zqs000acwvl8n6aku40",
+    "name": "WheelOfFortune",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Arcana_10_WheelOfFortune.avif",
+    "shortDesc": "Change, cycles",
+    "fullDesc": "The inevitable turning of fate and destiny.",
+    "fullDescFr": "Le tournant inévitable du destin et de la fatalité.",
+    "shortDescFr": "Changement, cycles"
+  },
+  {
+    "id": "cmko63zs2000bcwvltplhdl6v",
+    "name": "Justice",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Arcana_11_Justice.avif",
+    "shortDesc": "Fairness, truth",
+    "fullDesc": "Cause and effect, clarity, and legal matters.",
+    "fullDescFr": "Cause et effet, clarté et affaires juridiques.",
+    "shortDescFr": "Équité, vérité"
+  },
+  {
+    "id": "cmko63ztb000ccwvlstg65vkx",
+    "name": "HangedMan",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Arcana_12_HangedMan.avif",
+    "shortDesc": "Surrender, perspective",
+    "fullDesc": "Letting go and seeing things from a new angle.",
+    "fullDescFr": "Lâcher prise et voir les choses sous un nouvel angle.",
+    "shortDescFr": "Lâcher-prise, perspective"
+  },
+  {
+    "id": "cmko63zuk000dcwvl939qep9r",
+    "name": "Death",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Arcana_13_Death.avif",
+    "shortDesc": "Endings, transition",
+    "fullDesc": "The end of a phase clearing the way for something new.",
+    "fullDescFr": "La fin d'une phase laissant place à quelque chose de nouveau.",
+    "shortDescFr": "Fins, transition"
+  },
+  {
+    "id": "cmko63zvs000ecwvl9ioy5ait",
+    "name": "Temperance",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Arcana_14_Temperance.avif",
+    "shortDesc": "Balance, patience",
+    "fullDesc": "Moderation and finding the middle path.",
+    "fullDescFr": "Modération et recherche de la voie du milieu.",
+    "shortDescFr": "Équilibre, patience"
+  },
+  {
+    "id": "cmko63zx1000fcwvlweqvm2op",
+    "name": "Devil",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Arcana_15_Devil.avif",
+    "shortDesc": "Addiction, materialism",
+    "fullDesc": "Being trapped by desires or negative patterns.",
+    "fullDescFr": "Être piégé par ses désirs ou des schémas négatifs.",
+    "shortDescFr": "Addiction, matérialisme"
+  },
+  {
+    "id": "cmko63zy9000gcwvltqkggskr",
+    "name": "Tower",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Arcana_16_Tower.avif",
+    "shortDesc": "Sudden change, upheaval",
+    "fullDesc": "Destruction of false structures and chaotic revelation.",
+    "fullDescFr": "Destruction des fausses structures et révélation chaotique.",
+    "shortDescFr": "Changement soudain, bouleversement"
+  },
+  {
+    "id": "cmko63zzm000hcwvlpsscdgw1",
+    "name": "Star",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Arcana_17_Star.avif",
+    "shortDesc": "Hope, inspiration",
+    "fullDesc": "Renewal, faith, and a sense of healing.",
+    "fullDescFr": "Renouveau, foi et sentiment de guérison.",
+    "shortDescFr": "Espoir, inspiration"
+  },
+  {
+    "id": "cmko6400u000icwvlldvf3124",
+    "name": "Moon",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Arcana_18_Moon.avif",
+    "shortDesc": "Illusion, fear",
+    "fullDesc": "Uncertainty, deception, and the realm of dreams.",
+    "fullDescFr": "Incertitude, tromperie et le royaume des rêves.",
+    "shortDescFr": "Illusion, peur"
+  },
+  {
+    "id": "cmko64025000jcwvlnbvzfnrq",
+    "name": "Sun",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Arcana_19_Sun.avif",
+    "shortDesc": "Joy, success",
+    "fullDesc": "Positivity, vitality, and clarity.",
+    "fullDescFr": "Positivité, vitalité et clarté.",
+    "shortDescFr": "Joie, succès"
+  },
+  {
+    "id": "cmko6403f000kcwvlp2qobz69",
+    "name": "Judgement",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Arcana_20_Judgement.avif",
+    "shortDesc": "Rebirth, calling",
+    "fullDesc": "Absolution and rising to a higher level of consciousness.",
+    "fullDescFr": "Absolution et élévation vers un niveau de conscience supérieur.",
+    "shortDescFr": "Renaissance, appel"
+  },
+  {
+    "id": "cmko6404n000lcwvlzawx0rt4",
+    "name": "World",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Arcana_21_World.avif",
+    "shortDesc": "Completion, accomplishment",
+    "fullDesc": "Wholeness and the successful conclusion of a journey.",
+    "fullDescFr": "Plénitude et conclusion réussie d'un voyage.",
+    "shortDescFr": "Achèvement, accomplissement"
+  },
+  {
+    "id": "cmko6405w000mcwvlx0k5l3g4",
+    "name": "Ace of Wands",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Wands_1.avif",
+    "shortDesc": "Action, Passion",
+    "fullDesc": "New potential and raw power. Context: Creativity & Will.",
+    "fullDescFr": "Nouveau potentiel et puissance brute. Contexte: Créativité & Volonté.",
+    "shortDescFr": "Action, Passion"
+  },
+  {
+    "id": "cmko64076000ncwvlp80bc5wu",
+    "name": "2 of Wands",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Wands_2.avif",
+    "shortDesc": "Action, Passion",
+    "fullDesc": "Planning and future decisions. Context: Creativity & Will.",
+    "fullDescFr": "Planification et décisions futures. Contexte: Créativité & Volonté.",
+    "shortDescFr": "Action, Passion"
+  },
+  {
+    "id": "cmko6408f000ocwvla9voclg2",
+    "name": "3 of Wands",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Wands_3.avif",
+    "shortDesc": "Action, Passion",
+    "fullDesc": "Expansion and foresight. Context: Creativity & Will.",
+    "fullDescFr": "Expansion et prévoyance. Contexte: Créativité & Volonté.",
+    "shortDescFr": "Action, Passion"
+  },
+  {
+    "id": "cmko6409o000pcwvlricrjc1m",
+    "name": "4 of Wands",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Wands_4.avif",
+    "shortDesc": "Action, Passion",
+    "fullDesc": "Stability and conservation. Context: Creativity & Will.",
+    "fullDescFr": "Stabilité et conservation. Contexte: Créativité & Volonté.",
+    "shortDescFr": "Action, Passion"
+  },
+  {
+    "id": "cmko640ax000qcwvl5dihk4on",
+    "name": "5 of Wands",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Wands_5.avif",
+    "shortDesc": "Action, Passion",
+    "fullDesc": "Conflict, loss, or challenge. Context: Creativity & Will.",
+    "fullDescFr": "Conflit, perte ou défi. Contexte: Créativité & Volonté.",
+    "shortDescFr": "Action, Passion"
+  },
+  {
+    "id": "cmko640c7000rcwvlt7rlacq9",
+    "name": "6 of Wands",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Wands_6.avif",
+    "shortDesc": "Action, Passion",
+    "fullDesc": "Harmony, nostalgia, or charity. Context: Creativity & Will.",
+    "fullDescFr": "Harmonie, nostalgie ou charité. Contexte: Créativité & Volonté.",
+    "shortDescFr": "Action, Passion"
+  },
+  {
+    "id": "cmko640df000scwvlhp1rbpb2",
+    "name": "7 of Wands",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Wands_7.avif",
+    "shortDesc": "Action, Passion",
+    "fullDesc": "Perseverance and assessment. Context: Creativity & Will.",
+    "fullDescFr": "Persévérance et évaluation. Contexte: Créativité & Volonté.",
+    "shortDescFr": "Action, Passion"
+  },
+  {
+    "id": "cmko640eo000tcwvlvvyadeiq",
+    "name": "8 of Wands",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Wands_8.avif",
+    "shortDesc": "Action, Passion",
+    "fullDesc": "Action, speed, or mastery. Context: Creativity & Will.",
+    "fullDescFr": "Action, rapidité ou maîtrise. Contexte: Créativité & Volonté.",
+    "shortDescFr": "Action, Passion"
+  },
+  {
+    "id": "cmko640fx000ucwvlst0bod66",
+    "name": "9 of Wands",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Wands_9.avif",
+    "shortDesc": "Action, Passion",
+    "fullDesc": "Independence and fulfillment. Context: Creativity & Will.",
+    "fullDescFr": "Indépendance et accomplissement. Contexte: Créativité & Volonté.",
+    "shortDescFr": "Action, Passion"
+  },
+  {
+    "id": "cmko640h6000vcwvlf4me07wv",
+    "name": "10 of Wands",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Wands_10.avif",
+    "shortDesc": "Action, Passion",
+    "fullDesc": "Completion and legacy. Context: Creativity & Will.",
+    "fullDescFr": "Achèvement et héritage. Contexte: Créativité & Volonté.",
+    "shortDescFr": "Action, Passion"
+  },
+  {
+    "id": "cmko640if000wcwvl3q65mgn0",
+    "name": "Page of Wands",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Wands_11.avif",
+    "shortDesc": "Action, Passion",
+    "fullDesc": "Exploration and curiosity (Page). Context: Creativity & Will.",
+    "fullDescFr": "Exploration et curiosité (Valet). Contexte: Créativité & Volonté.",
+    "shortDescFr": "Action, Passion"
+  },
+  {
+    "id": "cmko640jo000xcwvldd0usigh",
+    "name": "Knight of Wands",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Wands_12.avif",
+    "shortDesc": "Action, Passion",
+    "fullDesc": "Action and pursuit (Knight). Context: Creativity & Will.",
+    "fullDescFr": "Action et poursuite (Cavalier). Contexte: Créativité & Volonté.",
+    "shortDescFr": "Action, Passion"
+  },
+  {
+    "id": "cmko640kz000ycwvl31wjqp6o",
+    "name": "Queen of Wands",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Wands_13.avif",
+    "shortDesc": "Action, Passion",
+    "fullDesc": "Nurturing and influence (Queen). Context: Creativity & Will.",
+    "fullDescFr": "Bienveillance et influence (Reine). Contexte: Créativité & Volonté.",
+    "shortDescFr": "Action, Passion"
+  },
+  {
+    "id": "cmko640m8000zcwvly0mlgozc",
+    "name": "King of Wands",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Wands_14.avif",
+    "shortDesc": "Action, Passion",
+    "fullDesc": "Authority and control (King). Context: Creativity & Will.",
+    "fullDescFr": "Autorité et contrôle (Roi). Contexte: Créativité & Volonté.",
+    "shortDescFr": "Action, Passion"
+  },
+  {
+    "id": "cmko640ng0010cwvlilej6qse",
+    "name": "Ace of Cups",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Cups_1.avif",
+    "shortDesc": "Love, Intuition",
+    "fullDesc": "New potential and raw power. Context: Emotions & Relationships.",
+    "fullDescFr": "Nouveau potentiel et puissance brute. Contexte: Émotions & Relations.",
+    "shortDescFr": "Amour, Intuition"
+  },
+  {
+    "id": "cmko640oq0011cwvlcvk017db",
+    "name": "2 of Cups",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Cups_2.avif",
+    "shortDesc": "Love, Intuition",
+    "fullDesc": "Planning and future decisions. Context: Emotions & Relationships.",
+    "fullDescFr": "Planification et décisions futures. Contexte: Émotions & Relations.",
+    "shortDescFr": "Amour, Intuition"
+  },
+  {
+    "id": "cmko640pz0012cwvl0yss7fvr",
+    "name": "3 of Cups",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Cups_3.avif",
+    "shortDesc": "Love, Intuition",
+    "fullDesc": "Expansion and foresight. Context: Emotions & Relationships.",
+    "fullDescFr": "Expansion et prévoyance. Contexte: Émotions & Relations.",
+    "shortDescFr": "Amour, Intuition"
+  },
+  {
+    "id": "cmko640r90013cwvlolxalml4",
+    "name": "4 of Cups",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Cups_4.avif",
+    "shortDesc": "Love, Intuition",
+    "fullDesc": "Stability and conservation. Context: Emotions & Relationships.",
+    "fullDescFr": "Stabilité et conservation. Contexte: Émotions & Relations.",
+    "shortDescFr": "Amour, Intuition"
+  },
+  {
+    "id": "cmko640si0014cwvlhjang35z",
+    "name": "5 of Cups",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Cups_5.avif",
+    "shortDesc": "Love, Intuition",
+    "fullDesc": "Conflict, loss, or challenge. Context: Emotions & Relationships.",
+    "fullDescFr": "Conflit, perte ou défi. Contexte: Émotions & Relations.",
+    "shortDescFr": "Amour, Intuition"
+  },
+  {
+    "id": "cmko640tq0015cwvlsxvnwsb9",
+    "name": "6 of Cups",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Cups_6.avif",
+    "shortDesc": "Love, Intuition",
+    "fullDesc": "Harmony, nostalgia, or charity. Context: Emotions & Relationships.",
+    "fullDescFr": "Harmonie, nostalgie ou charité. Contexte: Émotions & Relations.",
+    "shortDescFr": "Amour, Intuition"
+  },
+  {
+    "id": "cmko640uz0016cwvldp6log0t",
+    "name": "7 of Cups",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Cups_7.avif",
+    "shortDesc": "Love, Intuition",
+    "fullDesc": "Perseverance and assessment. Context: Emotions & Relationships.",
+    "fullDescFr": "Persévérance et évaluation. Contexte: Émotions & Relations.",
+    "shortDescFr": "Amour, Intuition"
+  },
+  {
+    "id": "cmko640w70017cwvlgx3e5cpx",
+    "name": "8 of Cups",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Cups_8.avif",
+    "shortDesc": "Love, Intuition",
+    "fullDesc": "Action, speed, or mastery. Context: Emotions & Relationships.",
+    "fullDescFr": "Action, rapidité ou maîtrise. Contexte: Émotions & Relations.",
+    "shortDescFr": "Amour, Intuition"
+  },
+  {
+    "id": "cmko640xf0018cwvl049lv0m0",
+    "name": "9 of Cups",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Cups_9.avif",
+    "shortDesc": "Love, Intuition",
+    "fullDesc": "Independence and fulfillment. Context: Emotions & Relationships.",
+    "fullDescFr": "Indépendance et accomplissement. Contexte: Émotions & Relations.",
+    "shortDescFr": "Amour, Intuition"
+  },
+  {
+    "id": "cmko640yo0019cwvlig8zhmxs",
+    "name": "10 of Cups",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Cups_10.avif",
+    "shortDesc": "Love, Intuition",
+    "fullDesc": "Completion and legacy. Context: Emotions & Relationships.",
+    "fullDescFr": "Achèvement et héritage. Contexte: Émotions & Relations.",
+    "shortDescFr": "Amour, Intuition"
+  },
+  {
+    "id": "cmko640zx001acwvlxt0atjuy",
+    "name": "Page of Cups",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Cups_11.avif",
+    "shortDesc": "Love, Intuition",
+    "fullDesc": "Exploration and curiosity (Page). Context: Emotions & Relationships.",
+    "fullDescFr": "Exploration et curiosité (Valet). Contexte: Émotions & Relations.",
+    "shortDescFr": "Amour, Intuition"
+  },
+  {
+    "id": "cmko64117001bcwvltftcbpjh",
+    "name": "Knight of Cups",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Cups_12.avif",
+    "shortDesc": "Love, Intuition",
+    "fullDesc": "Action and pursuit (Knight). Context: Emotions & Relationships.",
+    "fullDescFr": "Action et poursuite (Cavalier). Contexte: Émotions & Relations.",
+    "shortDescFr": "Amour, Intuition"
+  },
+  {
+    "id": "cmko6412f001ccwvlb60h28ba",
+    "name": "Queen of Cups",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Cups_13.avif",
+    "shortDesc": "Love, Intuition",
+    "fullDesc": "Nurturing and influence (Queen). Context: Emotions & Relationships.",
+    "fullDescFr": "Bienveillance et influence (Reine). Contexte: Émotions & Relations.",
+    "shortDescFr": "Amour, Intuition"
+  },
+  {
+    "id": "cmko6413o001dcwvlkifb7byq",
+    "name": "King of Cups",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Cups_14.avif",
+    "shortDesc": "Love, Intuition",
+    "fullDesc": "Authority and control (King). Context: Emotions & Relationships.",
+    "fullDescFr": "Autorité et contrôle (Roi). Contexte: Émotions & Relations.",
+    "shortDescFr": "Amour, Intuition"
+  },
+  {
+    "id": "cmko6414x001ecwvlyjstyugi",
+    "name": "Ace of Swords",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Swords_1.avif",
+    "shortDesc": "Thought, Truth",
+    "fullDesc": "New potential and raw power. Context: Intellect & Conflict.",
+    "fullDescFr": "Nouveau potentiel et puissance brute. Contexte: Intellect & Conflit.",
+    "shortDescFr": "Pensée, Vérité"
+  },
+  {
+    "id": "cmko64165001fcwvl6l8sohe0",
+    "name": "2 of Swords",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Swords_2.avif",
+    "shortDesc": "Thought, Truth",
+    "fullDesc": "Planning and future decisions. Context: Intellect & Conflict.",
+    "fullDescFr": "Planification et décisions futures. Contexte: Intellect & Conflit.",
+    "shortDescFr": "Pensée, Vérité"
+  },
+  {
+    "id": "cmko6417d001gcwvlwchucqlc",
+    "name": "3 of Swords",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Swords_3.avif",
+    "shortDesc": "Thought, Truth",
+    "fullDesc": "Expansion and foresight. Context: Intellect & Conflict.",
+    "fullDescFr": "Expansion et prévoyance. Contexte: Intellect & Conflit.",
+    "shortDescFr": "Pensée, Vérité"
+  },
+  {
+    "id": "cmko6418m001hcwvlej8tpbwc",
+    "name": "4 of Swords",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Swords_4.avif",
+    "shortDesc": "Thought, Truth",
+    "fullDesc": "Stability and conservation. Context: Intellect & Conflict.",
+    "fullDescFr": "Stabilité et conservation. Contexte: Intellect & Conflit.",
+    "shortDescFr": "Pensée, Vérité"
+  },
+  {
+    "id": "cmko6419u001icwvl2rc58kup",
+    "name": "5 of Swords",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Swords_5.avif",
+    "shortDesc": "Thought, Truth",
+    "fullDesc": "Conflict, loss, or challenge. Context: Intellect & Conflict.",
+    "fullDescFr": "Conflit, perte ou défi. Contexte: Intellect & Conflit.",
+    "shortDescFr": "Pensée, Vérité"
+  },
+  {
+    "id": "cmko641b3001jcwvls6vldruu",
+    "name": "6 of Swords",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Swords_6.avif",
+    "shortDesc": "Thought, Truth",
+    "fullDesc": "Harmony, nostalgia, or charity. Context: Intellect & Conflict.",
+    "fullDescFr": "Harmonie, nostalgie ou charité. Contexte: Intellect & Conflit.",
+    "shortDescFr": "Pensée, Vérité"
+  },
+  {
+    "id": "cmko641cb001kcwvlr42osfqx",
+    "name": "7 of Swords",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Swords_7.avif",
+    "shortDesc": "Thought, Truth",
+    "fullDesc": "Perseverance and assessment. Context: Intellect & Conflict.",
+    "fullDescFr": "Persévérance et évaluation. Contexte: Intellect & Conflit.",
+    "shortDescFr": "Pensée, Vérité"
+  },
+  {
+    "id": "cmko641dk001lcwvl800necpk",
+    "name": "8 of Swords",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Swords_8.avif",
+    "shortDesc": "Thought, Truth",
+    "fullDesc": "Action, speed, or mastery. Context: Intellect & Conflict.",
+    "fullDescFr": "Action, rapidité ou maîtrise. Contexte: Intellect & Conflit.",
+    "shortDescFr": "Pensée, Vérité"
+  },
+  {
+    "id": "cmko641es001mcwvlhycphx0e",
+    "name": "9 of Swords",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Swords_9.avif",
+    "shortDesc": "Thought, Truth",
+    "fullDesc": "Independence and fulfillment. Context: Intellect & Conflict.",
+    "fullDescFr": "Indépendance et accomplissement. Contexte: Intellect & Conflit.",
+    "shortDescFr": "Pensée, Vérité"
+  },
+  {
+    "id": "cmko641g1001ncwvlb1jmskda",
+    "name": "10 of Swords",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Swords_10.avif",
+    "shortDesc": "Thought, Truth",
+    "fullDesc": "Completion and legacy. Context: Intellect & Conflict.",
+    "fullDescFr": "Achèvement et héritage. Contexte: Intellect & Conflit.",
+    "shortDescFr": "Pensée, Vérité"
+  },
+  {
+    "id": "cmko641h9001ocwvli20gxceq",
+    "name": "Page of Swords",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Swords_11.avif",
+    "shortDesc": "Thought, Truth",
+    "fullDesc": "Exploration and curiosity (Page). Context: Intellect & Conflict.",
+    "fullDescFr": "Exploration et curiosité (Valet). Contexte: Intellect & Conflit.",
+    "shortDescFr": "Pensée, Vérité"
+  },
+  {
+    "id": "cmko641ii001pcwvly28n39da",
+    "name": "Knight of Swords",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Swords_12.avif",
+    "shortDesc": "Thought, Truth",
+    "fullDesc": "Action and pursuit (Knight). Context: Intellect & Conflict.",
+    "fullDescFr": "Action et poursuite (Cavalier). Contexte: Intellect & Conflit.",
+    "shortDescFr": "Pensée, Vérité"
+  },
+  {
+    "id": "cmko641jr001qcwvlpig2fkri",
+    "name": "Queen of Swords",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Swords_13.avif",
+    "shortDesc": "Thought, Truth",
+    "fullDesc": "Nurturing and influence (Queen). Context: Intellect & Conflict.",
+    "fullDescFr": "Bienveillance et influence (Reine). Contexte: Intellect & Conflit.",
+    "shortDescFr": "Pensée, Vérité"
+  },
+  {
+    "id": "cmko641kz001rcwvlfr0t9apa",
+    "name": "King of Swords",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Swords_14.avif",
+    "shortDesc": "Thought, Truth",
+    "fullDesc": "Authority and control (King). Context: Intellect & Conflict.",
+    "fullDescFr": "Autorité et contrôle (Roi). Contexte: Intellect & Conflit.",
+    "shortDescFr": "Pensée, Vérité"
+  },
+  {
+    "id": "cmko641m7001scwvlcm08pub1",
+    "name": "Ace of Pentacles",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Pentacles_1.avif",
+    "shortDesc": "Work, Money",
+    "fullDesc": "New potential and raw power. Context: Material & Career.",
+    "fullDescFr": "Nouveau potentiel et puissance brute. Contexte: Matériel & Carrière.",
+    "shortDescFr": "Travail, Argent"
+  },
+  {
+    "id": "cmko641ng001tcwvlk4eznmnq",
+    "name": "2 of Pentacles",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Pentacles_2.avif",
+    "shortDesc": "Work, Money",
+    "fullDesc": "Planning and future decisions. Context: Material & Career.",
+    "fullDescFr": "Planification et décisions futures. Contexte: Matériel & Carrière.",
+    "shortDescFr": "Travail, Argent"
+  },
+  {
+    "id": "cmko641oo001ucwvloq75bneg",
+    "name": "3 of Pentacles",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Pentacles_3.avif",
+    "shortDesc": "Work, Money",
+    "fullDesc": "Expansion and foresight. Context: Material & Career.",
+    "fullDescFr": "Expansion et prévoyance. Contexte: Matériel & Carrière.",
+    "shortDescFr": "Travail, Argent"
+  },
+  {
+    "id": "cmko641pz001vcwvlkgxrh3g0",
+    "name": "4 of Pentacles",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Pentacles_4.avif",
+    "shortDesc": "Work, Money",
+    "fullDesc": "Stability and conservation. Context: Material & Career.",
+    "fullDescFr": "Stabilité et conservation. Contexte: Matériel & Carrière.",
+    "shortDescFr": "Travail, Argent"
+  },
+  {
+    "id": "cmko641r7001wcwvl5wzlbp9p",
+    "name": "5 of Pentacles",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Pentacles_5.avif",
+    "shortDesc": "Work, Money",
+    "fullDesc": "Conflict, loss, or challenge. Context: Material & Career.",
+    "fullDescFr": "Conflit, perte ou défi. Contexte: Matériel & Carrière.",
+    "shortDescFr": "Travail, Argent"
+  },
+  {
+    "id": "cmko641sg001xcwvlvl7usa01",
+    "name": "6 of Pentacles",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Pentacles_6.avif",
+    "shortDesc": "Work, Money",
+    "fullDesc": "Harmony, nostalgia, or charity. Context: Material & Career.",
+    "fullDescFr": "Harmonie, nostalgie ou charité. Contexte: Matériel & Carrière.",
+    "shortDescFr": "Travail, Argent"
+  },
+  {
+    "id": "cmko641tp001ycwvltnoq4act",
+    "name": "7 of Pentacles",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Pentacles_7.avif",
+    "shortDesc": "Work, Money",
+    "fullDesc": "Perseverance and assessment. Context: Material & Career.",
+    "fullDescFr": "Persévérance et évaluation. Contexte: Matériel & Carrière.",
+    "shortDescFr": "Travail, Argent"
+  },
+  {
+    "id": "cmko641uz001zcwvlrui8jpaf",
+    "name": "8 of Pentacles",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Pentacles_8.avif",
+    "shortDesc": "Work, Money",
+    "fullDesc": "Action, speed, or mastery. Context: Material & Career.",
+    "fullDescFr": "Action, rapidité ou maîtrise. Contexte: Matériel & Carrière.",
+    "shortDescFr": "Travail, Argent"
+  },
+  {
+    "id": "cmko641w80020cwvlwhxhcx4f",
+    "name": "9 of Pentacles",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Pentacles_9.avif",
+    "shortDesc": "Work, Money",
+    "fullDesc": "Independence and fulfillment. Context: Material & Career.",
+    "fullDescFr": "Indépendance et accomplissement. Contexte: Matériel & Carrière.",
+    "shortDescFr": "Travail, Argent"
+  },
+  {
+    "id": "cmko641xg0021cwvlo1ou6lvb",
+    "name": "10 of Pentacles",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Pentacles_10.avif",
+    "shortDesc": "Work, Money",
+    "fullDesc": "Completion and legacy. Context: Material & Career.",
+    "fullDescFr": "Achèvement et héritage. Contexte: Matériel & Carrière.",
+    "shortDescFr": "Travail, Argent"
+  },
+  {
+    "id": "cmko641yp0022cwvlrm7pqft9",
+    "name": "Page of Pentacles",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Pentacles_11.avif",
+    "shortDesc": "Work, Money",
+    "fullDesc": "Exploration and curiosity (Page). Context: Material & Career.",
+    "fullDescFr": "Exploration et curiosité (Valet). Contexte: Matériel & Carrière.",
+    "shortDescFr": "Travail, Argent"
+  },
+  {
+    "id": "cmko641zy0023cwvl5y96ziyi",
+    "name": "Knight of Pentacles",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Pentacles_12.avif",
+    "shortDesc": "Work, Money",
+    "fullDesc": "Action and pursuit (Knight). Context: Material & Career.",
+    "fullDescFr": "Action et poursuite (Cavalier). Contexte: Matériel & Carrière.",
+    "shortDescFr": "Travail, Argent"
+  },
+  {
+    "id": "cmko642170024cwvlrigvrey7",
+    "name": "Queen of Pentacles",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Pentacles_13.avif",
+    "shortDesc": "Work, Money",
+    "fullDesc": "Nurturing and influence (Queen). Context: Material & Career.",
+    "fullDescFr": "Bienveillance et influence (Reine). Contexte: Matériel & Carrière.",
+    "shortDescFr": "Travail, Argent"
+  },
+  {
+    "id": "cmko6422f0025cwvlb4mfffu0",
+    "name": "King of Pentacles",
+    "imagePath": "https://qtqwill.dev/images/jdr/cards/MTA/Pentacles_14.avif",
+    "shortDesc": "Work, Money",
+    "fullDesc": "Authority and control (King). Context: Material & Career.",
+    "fullDescFr": "Autorité et contrôle (Roi). Contexte: Matériel & Carrière.",
+    "shortDescFr": "Travail, Argent"
+  }
+]

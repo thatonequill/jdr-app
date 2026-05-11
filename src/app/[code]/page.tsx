@@ -15,7 +15,7 @@ export default async function Page({
 
   if (!pseudo) {
     // Redirect back to login if no pseudo provided
-    redirect('/jdr')
+    redirect('/')
   }
 
   // 1. Fetch Room + Related Data
@@ -54,8 +54,7 @@ export default async function Page({
   return (
     <GameRoom 
       room={room}
-      initialDraws={room.draws}
-      cardLibrary={cardLibrary}
+      initialDraws={room.draws} // This will now contain only selected fields
       currentUser={{
         pseudo: pseudo,
         isGM: isGM,

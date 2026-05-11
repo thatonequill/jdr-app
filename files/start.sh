@@ -1,28 +1,71 @@
 #!/bin/sh
 set -ex
 
-# 1. Clean the Prisma Client to ensure no stale metadata exists in node_modules
+# This script is designed to run inside the Next.js 'web' container
+# and connect to a local Supabase instance running on the host machine
+# via `supabase start`.
+
+# Ensure the local Supabase services are running on your host machine
+# before starting this container (e.g., by running `supabase start` in your terminal).
+
+# 1. Regenerate Prisma Client
 echo "--- Regenerating Prisma Client ---"
 rm -rf ./node_modules/.prisma
 npm run db:generate
 
-# 2. Force Prisma to reset and push
-# The --force-reset flag is critical here. It tells Prisma: 
-# "I don't care if you think you're in sync; wipe the schemas and push the tables now."
-echo "--- Forcing Database Reset and Push ---"
-npx prisma db push --accept-data-loss --force-reset
+# 2. Apply Prisma schema to the local Supabase database.
+# This assumes `supabase start` has already initialized the database.
+# `db push` is suitable for development to quickly sync schema changes.
+# For production-like local environments, consider `npx prisma migrate dev`.
+echo "--- Applying Database Schema (Prisma db push) ---"
+# Use the DATABASE_URL set in docker-compose.yml which points to host.docker.internal
+npx prisma db push --accept-data-loss
 
-# 3. Short sleep to allow Postgres to index the new relations
+# 3. Short sleep to allow the database to process schema changes
+# and for any potential indexing.
 sleep 2
 
-# 4. Verify table existence
-echo "--- Verifying Table: jdr.Card ---"
-psql "$DATABASE_URL" -c "\dt public.*"
+# 4. Enable Row Level Security (RLS) and create policies for Realtime
+echo "--- Configuring Realtime Policies ---"
 
-# 5. Run the SQL seed
+# Card Table
+psql "$DATABASE_URL" -c "ALTER TABLE \"Card\" ENABLE ROW LEVEL SECURITY;" # This command is idempotent
+psql "$DATABASE_URL" -c "DROP POLICY IF EXISTS \"Enable read access for all users on Card\" ON \"Card\";"
+psql "$DATABASE_URL" -c "CREATE POLICY \"Enable read access for all users on Card\" ON \"Card\" FOR SELECT USING (true);"
+echo "RLS enabled and policy created for Card table."
+
+# Room Table
+psql "$DATABASE_URL" -c "ALTER TABLE \"Room\" ENABLE ROW LEVEL SECURITY;" # This command is idempotent
+psql "$DATABASE_URL" -c "DROP POLICY IF EXISTS \"Enable read access for all users on Room\" ON \"Room\";"
+psql "$DATABASE_URL" -c "CREATE POLICY \"Enable read access for all users on Room\" ON \"Room\" FOR SELECT USING (true);"
+echo "RLS enabled and policy created for Room table."
+
+# Player Table
+psql "$DATABASE_URL" -c "ALTER TABLE \"Player\" ENABLE ROW LEVEL SECURITY;" # This command is idempotent
+psql "$DATABASE_URL" -c "DROP POLICY IF EXISTS \"Enable read access for all users on Player\" ON \"Player\";"
+psql "$DATABASE_URL" -c "CREATE POLICY \"Enable read access for all users on Player\" ON \"Player\" FOR SELECT USING (true);"
+echo "RLS enabled and policy created for Player table."
+
+# Draw Table
+psql "$DATABASE_URL" -c "ALTER TABLE \"Draw\" ENABLE ROW LEVEL SECURITY;" # This command is idempotent
+psql "$DATABASE_URL" -c "DROP POLICY IF EXISTS \"Enable read access for all users on Draw\" ON \"Draw\";"
+psql "$DATABASE_URL" -c "CREATE POLICY \"Enable read access for all users on Draw\" ON \"Draw\" FOR SELECT USING (true);"
+echo "RLS enabled and policy created for Draw table."
+
+# 5. Add tables to Supabase Realtime publication
+echo "--- Enabling Realtime for Tables ---"
+psql "$DATABASE_URL" -c "ALTER PUBLICATION supabase_realtime ADD TABLE \"Card\";"
+echo "Card table added to Realtime publication."
+psql "$DATABASE_URL" -c "ALTER PUBLICATION supabase_realtime ADD TABLE \"Room\";"
+echo "Room table added to Realtime publication."
+psql "$DATABASE_URL" -c "ALTER PUBLICATION supabase_realtime ADD TABLE \"Player\";"
+echo "Player table added to Realtime publication."
+psql "$DATABASE_URL" -c "ALTER PUBLICATION supabase_realtime ADD TABLE \"Draw\";"
+echo "Draw table added to Realtime publication."
+
+# 6. Run the SQL seed
 echo "--- Seeding Database ---"
 npm run db:seed
-
-# 6. Start the server
+# 7. Start the Next.js development server
 echo "--- Starting Next.js ---"
 npm run dev -- -p 3001

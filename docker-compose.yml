@@ -1,39 +1,46 @@
 services:
-  db:
-    image: postgres:15-alpine
-    ports: # Maps host port 4001 to container port 5432 for the database
-      - "4001:5432"
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: local_dev_password
-      POSTGRES_DB: local_supabase
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d local_supabase"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+  # The 'db' service is commented out because you will be running a full local Supabase stack
+  # using the Supabase CLI (`supabase start`) which includes its own PostgreSQL database.
+  # Running both would cause port conflicts and an inconsistent environment.
+  # If you wish to use a simple PostgreSQL database without Supabase Realtime,
+  # uncomment this section and remove the Supabase CLI setup steps.
+  # db:
+  #   image: postgres:15-alpine
+  #   ports:
+  #     - "4001:5432" # This port will likely conflict with Supabase CLI's DB (default 54322)
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: local_dev_password
+  #     POSTGRES_DB: local_supabase
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U postgres -d local_supabase"]
+  #     interval: 5s
+  #     timeout: 5s
+  #     retries: 5
 
   web:
     build: 
       context: .
       dockerfile: Dockerfile.dev
-    ports: # Maps host port 3001 to container port 3000 for the Next.js app
+    ports:
       - "3001:3001"
     volumes:
       - .:/app
-      - /app/node_modules # Prevents your local machine's node_modules from conflicting with the container's
-      - /app/.next       # Keeps Next.js build cache inside the container
+      - /app/node_modules 
+      - /app/.next
     environment:
-      - DATABASE_URL=postgresql://postgres:local_dev_password@db:5432/local_supabase
-      
-      - DIRECT_URL=postgresql://postgres:local_dev_password@db:5432/local_supabase
+      - DATABASE_URL=postgresql://postgres:postgres@host.docker.internal:54322/postgres
+      - DIRECT_URL=postgresql://postgres:postgres@host.docker.internal:54322/postgres
+
+      - NEXT_PUBLIC_SUPABASE_URL=http://host.docker.internal:54321
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0
+
       - TRACKER_ADMIN_PASSWORD=Quill
-      
-    depends_on:
-      db:
-        condition: service_healthy
+
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
         
 volumes:
   postgres_data:
