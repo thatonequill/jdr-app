@@ -15,6 +15,15 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Crux | Draw Your Fate",
   description: "Where intuition meets chance. A sleek, duotone companion for tarot readings and TTRPG sessions. Your next move starts here.",
+  themeColor: '#059669',
+  openGraph: {
+    title: "Crux | Draw Your Fate",
+    description: "Where intuition meets chance. A sleek, duotone companion for tarot readings and TTRPG sessions. Your next move starts here.",
+    url: "https://crux.qtqwill.dev", // Assuming a deployment URL for the new JDR app
+    siteName: "Crux | Draw Your Fate",
+    type: "website",
+    images: [{ url: '/favicon-32x32.png', width: 32, height: 32, alt: 'Crux Favicon' }],
+  },
   icons: {
     icon: [
       { url: './favicon.ico' },
