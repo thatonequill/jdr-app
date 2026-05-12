@@ -1,7 +1,6 @@
 'use server'
 
 import { prisma } from '@/lib/db' // Points to your new working singleton
-import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { Prisma } from '@prisma/client'; // Import Prisma for raw SQL types
 
@@ -83,16 +82,23 @@ export async function joinRoom(formData: FormData) {
 
 // --- 2. GAMEPLAY ---
 
+import cardLibraryData from '@/lib/card-library.json';
+
 export async function performDraw(roomId: string, playerId: string, cardCount: number) {
-  // 1. Get all card IDs
-  // Optimize: Select random card IDs directly from the database
-  const randomCardIds: { id: string }[] = await prisma.$queryRaw(
-    Prisma.sql`SELECT id FROM "Card" ORDER BY RANDOM() LIMIT ${cardCount}`
-  );
+  // 1. Get all card IDs from static JSON
+  const allCardIds = cardLibraryData.map(card => card.id);
+  
+  // Shuffle array (Fisher-Yates)
+  for (let i = allCardIds.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [allCardIds[i], allCardIds[j]] = [allCardIds[j], allCardIds[i]];
+  }
+  
+  const randomCardIds = allCardIds.slice(0, cardCount);
   if (randomCardIds.length === 0) return;
 
-  const snapshot: CardSnapshot[] = randomCardIds.map((card, index) => ({
-    cardId: card.id,
+  const snapshot: CardSnapshot[] = randomCardIds.map((cardId, index) => ({
+    cardId: cardId,
     position: index,
     isReversed: Math.random() < 0.38, 
     isRevealed: false,
@@ -108,7 +114,6 @@ export async function performDraw(roomId: string, playerId: string, cardCount: n
     }
   })
 
-  revalidatePath(`/[code]`, 'page')
 }
 
 export async function drawCardFromDeck(drawId: string, cardIndex: number) {
@@ -123,7 +128,6 @@ export async function drawCardFromDeck(drawId: string, cardIndex: number) {
     `
   );
 
-  revalidatePath(`/[code]`, 'page')
 }
 
 export async function revealCard(drawId: string, cardIndex: number) {
@@ -138,7 +142,6 @@ export async function revealCard(drawId: string, cardIndex: number) {
     `
   );
 
-  revalidatePath(`/[code]`, 'page')
 }
 
 // --- 3. GM CONTROLS ---
@@ -148,8 +151,6 @@ export async function setActivePlayer(roomId: string, playerId: string) {
     where: { id: roomId },
     data: { activePlayerId: playerId }
   })
-  // Revalidates any dynamic route matching this structure
-  revalidatePath('/[code]', 'page') 
 }
 
 export async function toggleLock(roomId: string, isLocked: boolean) {
@@ -157,7 +158,6 @@ export async function toggleLock(roomId: string, isLocked: boolean) {
     where: { id: roomId },
     data: { isLocked }
   })
-  revalidatePath('/[code]', 'page')
 }
 
 export async function emptyRoom(roomId: string) {

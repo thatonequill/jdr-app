@@ -58,50 +58,38 @@ export default function GameRoom({ room, initialDraws, currentUser }: any) {
 
     console.log(`Subscribing to game updates for room: ${room.id}`);
 
-    // Subscribe to changes in the 'Room' table for this specific room
-    const roomChannel = supabase
-      .channel(`game_room:${room.id}`) // Unique channel name for room updates
+    // Consolidate Realtime channels to multiplex and save connections
+    const gameChannel = supabase
+      .channel(`game:${room.id}`)
       .on(
         'postgres_changes',
         { event: 'UPDATE', schema: 'public', table: 'Room', filter: `id=eq.${room.id}` },
         (payload) => {
           console.log('Supabase Realtime Room UPDATE received:', payload);
-          router.refresh(); // Trigger a refresh to re-fetch updated room data
+          router.refresh(); 
         }
       )
-      .subscribe();
-
-    // Subscribe to changes in the 'Draw' table for draws belonging to this room
-    const drawChannel = supabase
-      .channel(`game_draws:${room.id}`) // Unique channel name for draw updates
       .on(
         'postgres_changes',
         { event: '*', schema: 'public', table: 'Draw', filter: `roomId=eq.${room.id}` },
         (payload) => {
           console.log('Supabase Realtime Draw change received:', payload);
-          router.refresh(); // Trigger a refresh to re-fetch updated draws
+          router.refresh(); 
         }
       )
-      .subscribe();
-
-    // Subscribe to changes in the 'Player' table for players belonging to this room
-    const playerChannel = supabase
-      .channel(`game_players:${room.id}`) // Unique channel name for player updates
       .on(
         'postgres_changes',
         { event: '*', schema: 'public', table: 'Player', filter: `roomId=eq.${room.id}` },
         (payload) => {
           console.log('Supabase Realtime Player change received:', payload);
-          router.refresh(); // Trigger a refresh to re-fetch updated players
+          router.refresh();
         }
       )
       .subscribe();
 
     return () => {
-      console.log(`Unsubscribing from Supabase channels for game:${room.id}`);
-      supabase.removeChannel(roomChannel);
-      supabase.removeChannel(drawChannel);
-      supabase.removeChannel(playerChannel);
+      console.log(`Unsubscribing from Supabase channel for game:${room.id}`);
+      supabase.removeChannel(gameChannel);
     };
   }, [room?.id, router]); // Re-subscribe if room.id or router changes
   
