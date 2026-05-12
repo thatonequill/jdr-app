@@ -50,10 +50,7 @@ const THEMES = {
       background: "#fefce8",
       foreground: "#18181b",
       primary: "#facc15",
-
-      secondary: "#f43f5e", // Rose-600 
-      // secondary: "#e11d48", // (Rose-700)
-      
+      secondary: "#f43f5e",
       muted: "#fef9c3",
       border: "#e4e4e7",
       card: "#ffffff",
@@ -62,9 +59,7 @@ const THEMES = {
       background: "#09090b",
       foreground: "#facc15", 
       primary: "#fef08a",
-      
       secondary: "#fb7185", 
-      
       muted: "#27272a",
       border: "#3f3f46",
       card: "rgba(255,255,255,0.05)",

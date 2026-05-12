@@ -4,6 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+  schemas  = ["crux"]
 }
 
 model Card {
@@ -14,6 +15,8 @@ model Card {
   shortDescFr String?
   fullDesc    String?
   fullDescFr  String?
+
+  @@schema("crux")
 }
 
 model Room {
@@ -32,6 +35,8 @@ model Room {
 
   players Player[]
   draws   Draw[]
+
+  @@schema("crux")
 }
 
 model Player {
@@ -41,6 +46,8 @@ model Player {
   room   Room   @relation(fields: [roomId], references: [id], onDelete: Cascade)
 
   draws Draw[]
+
+  @@schema("crux")
 }
 
 model Draw {
@@ -54,4 +61,6 @@ model Draw {
   cardsSnapshot Json
 
   timestamp DateTime @default(now())
+
+  @@schema("crux")
 }
