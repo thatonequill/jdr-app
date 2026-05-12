@@ -54,13 +54,13 @@ echo "RLS enabled and policy created for Draw table."
 
 # 5. Add tables to Supabase Realtime publication
 echo "--- Enabling Realtime for Tables ---"
-psql "$DATABASE_URL" -c "ALTER PUBLICATION supabase_realtime ADD TABLE \"Card\";"
+psql "$DATABASE_URL" -c "ALTER PUBLICATION supabase_realtime ADD TABLE \"Card\";" || true
 echo "Card table added to Realtime publication."
-psql "$DATABASE_URL" -c "ALTER PUBLICATION supabase_realtime ADD TABLE \"Room\";"
+psql "$DATABASE_URL" -c "ALTER PUBLICATION supabase_realtime ADD TABLE \"Room\";" || true
 echo "Room table added to Realtime publication."
-psql "$DATABASE_URL" -c "ALTER PUBLICATION supabase_realtime ADD TABLE \"Player\";"
+psql "$DATABASE_URL" -c "ALTER PUBLICATION supabase_realtime ADD TABLE \"Player\";" || true
 echo "Player table added to Realtime publication."
-psql "$DATABASE_URL" -c "ALTER PUBLICATION supabase_realtime ADD TABLE \"Draw\";"
+psql "$DATABASE_URL" -c "ALTER PUBLICATION supabase_realtime ADD TABLE \"Draw\";" || true
 echo "Draw table added to Realtime publication."
 
 # 6. Run the SQL seed
