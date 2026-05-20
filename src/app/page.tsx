@@ -31,7 +31,7 @@ export default function JdrLandingPage() {
         <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
           {/* GM SECTION */}
           <div className="bg-card p-8 rounded-2xl border border-border shadow-xl">
-            <h2 className="text-2xl font-bold mb-4 text-secondary">Game Master</h2>
+            <h2 className="text-2xl font-bold mb-4 text-secondary crux-font">Game Master</h2>
             <form action={createRoom} className="flex flex-col gap-4">
               <input 
                 name="code" type="text" placeholder="Room Code (e.g. CAMELOT)" required 
@@ -49,7 +49,7 @@ export default function JdrLandingPage() {
 
           {/* PLAYER SECTION */}
           <div className="bg-card p-8 rounded-2xl border border-border shadow-xl">
-            <h2 className="text-2xl font-bold mb-4 text-primary">Player</h2>
+            <h2 className="text-2xl font-bold mb-4 text-primary crux-font">Player</h2>
             <form action={joinRoom} className="flex flex-col gap-4">
               <input 
                 name="code" type="text" placeholder="Room Code" required 

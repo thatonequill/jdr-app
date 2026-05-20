@@ -23,7 +23,7 @@ export default function Controls({ room, currentUser, activePlayerId }: any) {
     return (
       <div className="flex flex-wrap gap-4 items-center justify-between">
         <div className="flex gap-2">
-           <span className="text-xs font-bold text-muted-foreground uppercase self-center mr-2">Set Turn:</span>
+           <span className="text-xs font-bold text-muted-foreground uppercase self-center mr-2 crux-font">Set Turn:</span>
            {room.players.map((p: any) => (
              <button
                key={p.id}
@@ -56,7 +56,7 @@ export default function Controls({ room, currentUser, activePlayerId }: any) {
                  startTransition(() => emptyRoom(room.id))
                }
              }}
-             className="px-4 py-2 bg-muted hover:bg-muted/50 rounded text-muted-foreground text-sm font-bold border border-border"
+             className="px-4 py-2 bg-muted hover:bg-muted/50 rounded text-muted-foreground text-sm font-bold border border-border crux-font"
            >
              🗑️ EMPTY ROOM
            </button>
@@ -72,7 +72,7 @@ export default function Controls({ room, currentUser, activePlayerId }: any) {
     return (
       <div className="flex items-center justify-center w-full">
          <div className="flex flex-col items-center animate-in slide-in-from-bottom-4 duration-500">
-            <p className="text-secondary text-sm mb-2 font-bold uppercase tracking-wider">It is your turn</p>
+            <p className="text-secondary text-sm mb-2 font-bold uppercase tracking-wider crux-font">It is your turn</p>
             <button
               onClick={handleDraw}
               disabled={isPending}
@@ -86,7 +86,7 @@ export default function Controls({ room, currentUser, activePlayerId }: any) {
   }
 
   return (
-    <div className="text-center text-muted-foreground text-sm italic">
+    <div className="text-center text-muted-foreground text-sm italic crux-font">
       Waiting for the Game Master...
     </div>
   )

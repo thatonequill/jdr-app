@@ -65,7 +65,7 @@ export default function Card({ data, def, canFlip, isDeck, onDeckClick }: any) {
             
             {/* --- STANDARD CONTENT --- */}
             <div className='h-7 flex items-center justify-center'>
-              <p className="text-sm truncate px-2">{def.name}</p>
+              <p className="text-sm truncate px-2 crux-font">{def.name}</p>
             </div>
 
             {/* Card Image */}
@@ -79,7 +79,7 @@ export default function Card({ data, def, canFlip, isDeck, onDeckClick }: any) {
 
             {/* Card Short Desc */}
             <div className='text-xs h-10 flex justify-center items-center px-2 text-center leading-tight bg-muted text-muted-foreground'>
-              <p className="line-clamp-2">{def.shortDesc}</p>
+              <p className="line-clamp-2 crux-font">{def.shortDesc}</p>
             </div>
 
             {/* <pre>
@@ -127,7 +127,7 @@ export default function Card({ data, def, canFlip, isDeck, onDeckClick }: any) {
             {/* Details Section */}
             <div className="flex flex-col gap-4 flex-1">
               <div>
-                <h2 className="text-2xl font-bold text-primary">{def.name}</h2>
+                <h2 className="text-2xl font-bold text-primary crux-font">{def.name}</h2>
                 {data.isReversed && (
                   <span className="text-xs font-bold text-destructive uppercase tracking-widest">Reversed</span>
                 )}

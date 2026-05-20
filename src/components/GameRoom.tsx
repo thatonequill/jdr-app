@@ -117,7 +117,7 @@ export default function GameRoom({ room, initialDraws, currentUser }: any) {
   return (
     <div className="h-[100dvh] bg-background text-foreground flex flex-col md:flex-row overflow-hidden">      
       {/* SIDEBAR: Players */}
-      <aside className="w-full md:w-64 bg-card p-4 border-r border-border flex-shrink-0">
+      <aside className="w-full md:w-64 bg-card p-4 border-r border-border flex-shrink-0 crux-font">
         <h2 className="text-xl font-bold text-primary mb-4 tracking-widest">
           {room.code}
         </h2>
@@ -158,7 +158,7 @@ export default function GameRoom({ room, initialDraws, currentUser }: any) {
            {/* THE DECK PILE */}
            {latestDraw && undrawnCardsCount > 0 && (
              <div className="mb-8 md:mb-12 flex flex-col items-left animate-in fade-in duration-500">
-               <p className="text-secondary text-sm font-bold uppercase mb-4 tracking-widest">
+               <p className="text-secondary text-sm font-bold uppercase mb-4 tracking-widest crux-font">
                  {isOwner ? `Click to Draw (${totalCards - undrawnCardsCount + 1}/${totalCards})` : `Drawing (${totalCards - undrawnCardsCount}/${totalCards})...`}
                </p>
                <div className="relative w-32 h-48 md:w-40 md:h-60">

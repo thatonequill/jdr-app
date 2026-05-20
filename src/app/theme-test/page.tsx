@@ -95,7 +95,7 @@ export default function ThemeTestPage() {
         <header className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[var(--border)] pb-8">
           <div>
             <p className="text-xs font-bold uppercase tracking-widest text-[var(--primary)] mb-1">Sub-Project Preview</p>
-            <h1 className="text-4xl font-black">{THEMES[activeTheme].name}</h1>
+            <h1 className="text-4xl font-black crux-font">{THEMES[activeTheme].name}</h1>
           </div>
 
           <div className="flex flex-wrap gap-3 p-2 bg-[var(--muted)] rounded-xl border border-[var(--border)]">
@@ -126,7 +126,7 @@ export default function ThemeTestPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
           <section className="md:col-span-2 p-8 rounded-3xl bg-[var(--card)] border border-[var(--border)] shadow-xl">
-            <h2 className="text-2xl font-bold mb-4">Interface Test</h2>
+            <h2 className="text-2xl font-bold mb-4 crux-font">Interface Test</h2>
             <p className="mb-6 opacity-80 leading-relaxed">
               Theme switching is now handled via React state and CSS variables on a wrapper. 
               This avoids hydration errors and works perfectly with <span className="text-[var(--primary)] font-bold">Tailwind v4</span>.

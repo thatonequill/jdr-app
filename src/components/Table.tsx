@@ -11,7 +11,7 @@ export default function Table({ draws, cardLibrary, currentUser, activePlayerId 
     <div className="flex flex-col gap-35 pb-20">
       {draws.length === 0 && (
         <div className="text-center text-muted-foreground mt-20 text-xl font-light">
-          The table is empty. Waiting for the first draw...
+          <span className="crux-font">The table is empty. Waiting for the first draw...</span>
         </div>
       )}
 
@@ -20,7 +20,7 @@ export default function Table({ draws, cardLibrary, currentUser, activePlayerId 
         const canInteract = isOwner && (currentUser.id === activePlayerId)
 
         return (
-          <div key={draw.id} className="relative group">
+          <div key={draw.id} className="relative group crux-font">
             <div className="mb-2 text-sm text-muted-foreground uppercase tracking-widest pl-2 border-l-2 border-primary">
               Draw by {draw.player.pseudo || 'Unknown'}
             </div>

@@ -19,8 +19,8 @@
 
     --color-border: var(--border);
 
-    --font-sans: var(--font-geist-sans);
-    --font-mono: var(--font-geist-mono);
+    --font-default: var(--font-default);
+    --font-crux-title: var(--font-crux-title);
 }
 
 /* 2. Define the actual colors (Light Mode) */
@@ -70,7 +70,7 @@
     body {
         background-color: var(--background);
         color: var(--foreground);
-        font-family: var(--font-sans); /* Use the Geist font */
+        font-family: var(--font-default); /* Apply default font to body */
         /* Smooth transition for theme toggle */
         transition-property:
             color, background-color, border-color, text-decoration-color, fill,
@@ -78,4 +78,15 @@
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         transition-duration: 300ms;
     }
+}
+
+/* Custom font classes */
+.crux-font {
+    /* JDR App titles */
+    font-family: var(--font-crux-title);
+}
+
+.default-font {
+    /* Default font everywhere */
+    font-family: var(--font-default);
 }

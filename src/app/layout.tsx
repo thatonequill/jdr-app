@@ -1,16 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Elms_Sans, Modern_Antiqua } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const elmsSans = Elms_Sans({
+  variable: "--font-default",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const modernAntiqua = Modern_Antiqua({
+  weight: "400", // Modern Antiqua has only 400 weight
+  variable: "--font-crux-title",
   subsets: ["latin"],
+  display: "swap",
 });
+
+// Exporting for potential use in other components if needed, though not directly used in layout.
+export { elmsSans, modernAntiqua };
+
 
 export const viewport: Viewport = {
   themeColor: '#059669',
@@ -42,12 +49,12 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode; // Default font for the entire application
 }>) {
   return (
     <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      lang="en" // Apply default font and crux title font variables to the html tag
+      className={`${elmsSans.variable} ${modernAntiqua.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
