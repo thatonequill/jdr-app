@@ -26,7 +26,6 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "Crux | Draw Your Fate",
   description: "Where intuition meets chance. A sleek, duotone companion for tarot readings and TTRPG sessions. Your next move starts here.",
-  themeColor: '#059669',
   openGraph: {
     title: "Crux | Draw Your Fate",
     description: "Where intuition meets chance. A sleek, duotone companion for tarot readings and TTRPG sessions. Your next move starts here.",

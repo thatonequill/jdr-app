@@ -12,8 +12,8 @@ import cardLibraryData from '@/lib/card-library.json'; // Import the static card
 
 // Initialize Supabase client outside the component to avoid re-initialization
 // Ensure these environment variables are correctly set in your .env.local or deployment environment
-let supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+let supabaseUrl = process.env.NEXT_PUBLIC_STORAGE_SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_STORAGE_SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 // FIX: The browser on the host machine cannot resolve 'host.docker.internal'.
 // We rewrite it to 'localhost' if we are running in the client browser.
