@@ -2,7 +2,7 @@ import { Pool } from 'pg'
 import { PrismaPg } from '@prisma/adapter-pg'
 import { PrismaClient } from '@prisma/client'
 
-const connectionString = `${process.env.DATABASE_URL}`
+const connectionString = `${process.env.STORAGE_POSTGRES_URL_NON_POOLING}`
 
 // 1. Configure the PostgreSQL connection pool
 // This uses your 'DATABASE_URL' from.env (Port 6543)
