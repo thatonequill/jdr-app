@@ -26,21 +26,19 @@ services:
       dockerfile: Dockerfile.dev
     ports:
       - "3001:3001"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     volumes:
       - .:/app
       - /app/node_modules 
       - /app/.next
     environment:
-      - DATABASE_URL=postgresql://postgres:postgres@host.docker.internal:54322/postgres
-      - DIRECT_URL=postgresql://postgres:postgres@host.docker.internal:54322/postgres
-
-      - NEXT_PUBLIC_SUPABASE_URL=http://host.docker.internal:54321
-      - NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0
+      - DATABASE_URL=${DATABASE_URL}
+      - DIRECT_URL=${DIRECT_URL}
+      - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
 
       - TRACKER_ADMIN_PASSWORD=Quill
-
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
         
 volumes:
   postgres_data:

@@ -29,38 +29,38 @@ sleep 2
 echo "--- Configuring Realtime Policies ---"
 
 # Card Table
-psql "$DATABASE_URL" -c "ALTER TABLE \"Card\" ENABLE ROW LEVEL SECURITY;" # This command is idempotent
-psql "$DATABASE_URL" -c "DROP POLICY IF EXISTS \"Enable read access for all users on Card\" ON \"Card\";"
-psql "$DATABASE_URL" -c "CREATE POLICY \"Enable read access for all users on Card\" ON \"Card\" FOR SELECT USING (true);"
+psql "$DATABASE_URL" -c "ALTER TABLE \"crux\".\"Card\" ENABLE ROW LEVEL SECURITY;" # This command is idempotent
+psql "$DATABASE_URL" -c "DROP POLICY IF EXISTS \"Enable read access for all users on Card\" ON \"crux\".\"Card\";"
+psql "$DATABASE_URL" -c "CREATE POLICY \"Enable read access for all users on Card\" ON \"crux\".\"Card\" FOR SELECT USING (true);"
 echo "RLS enabled and policy created for Card table."
 
 # Room Table
-psql "$DATABASE_URL" -c "ALTER TABLE \"Room\" ENABLE ROW LEVEL SECURITY;" # This command is idempotent
-psql "$DATABASE_URL" -c "DROP POLICY IF EXISTS \"Enable read access for all users on Room\" ON \"Room\";"
-psql "$DATABASE_URL" -c "CREATE POLICY \"Enable read access for all users on Room\" ON \"Room\" FOR SELECT USING (true);"
+psql "$DATABASE_URL" -c "ALTER TABLE \"crux\".\"Room\" ENABLE ROW LEVEL SECURITY;" # This command is idempotent
+psql "$DATABASE_URL" -c "DROP POLICY IF EXISTS \"Enable read access for all users on Room\" ON \"crux\".\"Room\";"
+psql "$DATABASE_URL" -c "CREATE POLICY \"Enable read access for all users on Room\" ON \"crux\".\"Room\" FOR SELECT USING (true);"
 echo "RLS enabled and policy created for Room table."
 
 # Player Table
-psql "$DATABASE_URL" -c "ALTER TABLE \"Player\" ENABLE ROW LEVEL SECURITY;" # This command is idempotent
-psql "$DATABASE_URL" -c "DROP POLICY IF EXISTS \"Enable read access for all users on Player\" ON \"Player\";"
-psql "$DATABASE_URL" -c "CREATE POLICY \"Enable read access for all users on Player\" ON \"Player\" FOR SELECT USING (true);"
+psql "$DATABASE_URL" -c "ALTER TABLE \"crux\".\"Player\" ENABLE ROW LEVEL SECURITY;" # This command is idempotent
+psql "$DATABASE_URL" -c "DROP POLICY IF EXISTS \"Enable read access for all users on Player\" ON \"crux\".\"Player\";"
+psql "$DATABASE_URL" -c "CREATE POLICY \"Enable read access for all users on Player\" ON \"crux\".\"Player\" FOR SELECT USING (true);"
 echo "RLS enabled and policy created for Player table."
 
 # Draw Table
-psql "$DATABASE_URL" -c "ALTER TABLE \"Draw\" ENABLE ROW LEVEL SECURITY;" # This command is idempotent
-psql "$DATABASE_URL" -c "DROP POLICY IF EXISTS \"Enable read access for all users on Draw\" ON \"Draw\";"
-psql "$DATABASE_URL" -c "CREATE POLICY \"Enable read access for all users on Draw\" ON \"Draw\" FOR SELECT USING (true);"
+psql "$DATABASE_URL" -c "ALTER TABLE \"crux\".\"Draw\" ENABLE ROW LEVEL SECURITY;" # This command is idempotent
+psql "$DATABASE_URL" -c "DROP POLICY IF EXISTS \"Enable read access for all users on Draw\" ON \"crux\".\"Draw\";"
+psql "$DATABASE_URL" -c "CREATE POLICY \"Enable read access for all users on Draw\" ON \"crux\".\"Draw\" FOR SELECT USING (true);"
 echo "RLS enabled and policy created for Draw table."
 
 # 5. Add tables to Supabase Realtime publication
 echo "--- Enabling Realtime for Tables ---"
-psql "$DATABASE_URL" -c "ALTER PUBLICATION supabase_realtime ADD TABLE \"Card\";" || true
+psql "$DATABASE_URL" -c "ALTER PUBLICATION supabase_realtime ADD TABLE \"crux\".\"Card\";" || true
 echo "Card table added to Realtime publication."
-psql "$DATABASE_URL" -c "ALTER PUBLICATION supabase_realtime ADD TABLE \"Room\";" || true
+psql "$DATABASE_URL" -c "ALTER PUBLICATION supabase_realtime ADD TABLE \"crux\".\"Room\";" || true
 echo "Room table added to Realtime publication."
-psql "$DATABASE_URL" -c "ALTER PUBLICATION supabase_realtime ADD TABLE \"Player\";" || true
+psql "$DATABASE_URL" -c "ALTER PUBLICATION supabase_realtime ADD TABLE \"crux\".\"Player\";" || true
 echo "Player table added to Realtime publication."
-psql "$DATABASE_URL" -c "ALTER PUBLICATION supabase_realtime ADD TABLE \"Draw\";" || true
+psql "$DATABASE_URL" -c "ALTER PUBLICATION supabase_realtime ADD TABLE \"crux\".\"Draw\";" || true
 echo "Draw table added to Realtime publication."
 
 # 6. Run the SQL seed

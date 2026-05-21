@@ -1,5 +1,5 @@
 INSERT INTO
-    "Card" (
+    "crux"."Card" (
         "id",
         "name",
         "imagePath",

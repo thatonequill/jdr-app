@@ -119,7 +119,7 @@ export async function performDraw(roomId: string, playerId: string, cardCount: n
 export async function drawCardFromDeck(drawId: string, cardIndex: number) {
   await prisma.$executeRaw(
     Prisma.sql`
-      UPDATE "Draw"
+      UPDATE "crux"."Draw"
       SET "cardsSnapshot" = jsonb_set(
           jsonb_set("cardsSnapshot", ARRAY[${cardIndex}::text, 'isDrawn'], 'true'::jsonb),
           ARRAY[${cardIndex}::text, 'isRevealed'], 'true'::jsonb
@@ -133,7 +133,7 @@ export async function drawCardFromDeck(drawId: string, cardIndex: number) {
 export async function revealCard(drawId: string, cardIndex: number) {
   await prisma.$executeRaw(
     Prisma.sql`
-      UPDATE "Draw"
+      UPDATE "crux"."Draw"
       SET "cardsSnapshot" = jsonb_set(
           "cardsSnapshot",
           ARRAY[${cardIndex}::text, 'isRevealed'], 'true'::jsonb
