@@ -1,6 +1,6 @@
 {
-  "name": "jdr-app",
-  "version": "0.1.0",
+  "name": "crux",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
