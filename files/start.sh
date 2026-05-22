@@ -26,7 +26,11 @@ npx prisma db push --accept-data-loss
 sleep 2
 
 # 4. Enable Row Level Security (RLS) and create policies for Realtime
-echo "--- Configuring Realtime Policies ---"
+echo "--- Configuring Realtime Policies & Permissions ---"
+
+# Grant schema usage and table select to Supabase roles
+psql "$DATABASE_URL" -c "GRANT USAGE ON SCHEMA crux TO anon, authenticated;"
+psql "$DATABASE_URL" -c "GRANT SELECT ON ALL TABLES IN SCHEMA crux TO anon, authenticated;"
 
 # Card Table
 psql "$DATABASE_URL" -c "ALTER TABLE \"crux\".\"Card\" ENABLE ROW LEVEL SECURITY;" # This command is idempotent

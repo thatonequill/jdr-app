@@ -4,13 +4,19 @@ import { PrismaClient } from '@prisma/client'
 
 // 1. Grab the correct pooled connection string from Vercel
 // We use STORAGE_POSTGRES_URL for runtime queries to take advantage of the connection pooler
-const rawUrl = process.env.STORAGE_POSTGRES_URL || '';
+const rawUrl = process.env.STORAGE_POSTGRES_URL || process.env.STORAGE_POSTGRES_URL_NON_POOLING || process.env.DIRECT_URL || process.env.DATABASE_URL || '';
+
+if (!rawUrl) {
+  throw new Error("Missing database connection URL. Please set STORAGE_POSTGRES_URL or equivalent in your environment.");
+}
 
 // 2. Safely parse the URL and inject the SSL bypass parameters
 // This fixes the "self-signed certificate" error
 const connectionUrl = new URL(rawUrl);
 connectionUrl.searchParams.set("uselibpqcompat", "true");
-connectionUrl.searchParams.set("sslmode", "require");
+if (process.env.NODE_ENV === 'production') {
+  connectionUrl.searchParams.set("sslmode", "require");
+}
 
 // 3. Configure the PostgreSQL connection pool with the updated string
 const pool = new Pool({ 

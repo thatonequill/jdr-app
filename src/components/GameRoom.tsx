@@ -63,7 +63,7 @@ export default function GameRoom({ room, initialDraws, currentUser }: any) {
       .channel(`game:${room.id}`)
       .on(
         'postgres_changes',
-        { event: 'UPDATE', schema: 'public', table: 'Room', filter: `id=eq.${room.id}` },
+        { event: 'UPDATE', schema: 'crux', table: 'Room', filter: `id=eq.${room.id}` },
         (payload) => {
           console.log('Supabase Realtime Room UPDATE received:', payload);
           router.refresh(); 
@@ -71,7 +71,7 @@ export default function GameRoom({ room, initialDraws, currentUser }: any) {
       )
       .on(
         'postgres_changes',
-        { event: '*', schema: 'public', table: 'Draw', filter: `roomId=eq.${room.id}` },
+        { event: '*', schema: 'crux', table: 'Draw', filter: `roomId=eq.${room.id}` },
         (payload) => {
           console.log('Supabase Realtime Draw change received:', payload);
           router.refresh(); 
@@ -79,13 +79,15 @@ export default function GameRoom({ room, initialDraws, currentUser }: any) {
       )
       .on(
         'postgres_changes',
-        { event: '*', schema: 'public', table: 'Player', filter: `roomId=eq.${room.id}` },
+        { event: '*', schema: 'crux', table: 'Player', filter: `roomId=eq.${room.id}` },
         (payload) => {
           console.log('Supabase Realtime Player change received:', payload);
           router.refresh();
         }
       )
-      .subscribe();
+      .subscribe((status) => {
+        console.log('Supabase Realtime connection status:', status);
+      });
 
     return () => {
       console.log(`Unsubscribing from Supabase channel for game:${room.id}`);
